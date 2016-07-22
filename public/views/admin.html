@@ -1,0 +1,13 @@
+<div class="container">
+	<form class="navbar-form" ng-submit="apiCall(method, value)">
+		<select class="form-control" ng-model="method">
+			<option value="POST" selected>POST</option>
+			<option value="PUT">PUT</option>
+			<option value="DELETE">DELETE</option>
+		</select>
+		<input ng-class="{hidden: method=='POST'}" class="form-control" placeholder="id" ng-model="value.id">
+		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="name" ng-model="value.req.name">
+		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="age" ng-model="value.req.age">
+		<input type="submit" value="Submit">
+	</form>
+</div>

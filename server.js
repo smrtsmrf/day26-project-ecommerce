@@ -5,10 +5,16 @@ var mongojs = require('mongojs');
 var ObjectId = mongojs.ObjectId;
 
 var port = 3000;
+var corsOptions = {
+	origin: 'http://localhost:' + port
+};
 
 var app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(cors())
+app.use(express.static(__dirname + '/public/'));
+
 
 var db = mongojs('ecommerce', ['products'])
 
