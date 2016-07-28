@@ -44,7 +44,7 @@ Now that MongoJS is removed, install Mongoose and follow the [instructions](http
 ```
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/products');
-```
+<!-- ``` -->
 
 
 ### Step 2: Create Product Model

@@ -40,7 +40,7 @@ Today we are going to set up our Node application, set up a basic API, add funct
 <!-- 3. Create your Express app (no endpoints yet) and listen for connections -->
 
 
-<!-- ### Initialize your connection to Mongo -->
+### Initialize your connection to Mongo
 
 <!-- #### -->
 
@@ -61,11 +61,11 @@ Today we are going to set up our Node application, set up a basic API, add funct
 **code**
 ```
 var db = mongo('ecommerce', ['products']);
-```
+``` -->
 
 ### Create Express API
 
-#### -->
+<!-- #### -->
 
 <!-- Now you'll create endpoints to create, read, update, and delete products (CRUD).  Have them each send back a unique random string on the `res`. -->
 
@@ -85,10 +85,10 @@ var db = mongo('ecommerce', ['products']);
 <!-- *Note*: We haven't hooked up to Mongo yet. This is just to test our Express API. -->
 
 <!-- #### -->
-<!-- 
+
 **Making an endpoint reminder**
 
-A node endpoint is made by registering it with our express app :
+<!-- A node endpoint is made by registering it with our express app :
 
 `app.[method]([url], [callbackFunction])`
 
@@ -119,20 +119,20 @@ app.put('/api/products/:id', function(req, res){
 app.delete('/api/products/:id', function(req, res){
    res.send("I have deleted nothing, especially not " + req.params.id)
 });
-```
- -->
+``` -->
 
-<!-- ### Add a product
 
-#### -->
+### Add a product
+
+<!-- #### -->
 
 <!-- Complete the POST `/api/products` endpoint -->
 
 <!-- **TESTPOINT**: At this point you should be able to hit the endpoint and have it use your database. Use Postman to hit your endpoint.  You should be able to get a response back in Postman, and be able to see your data being added in your database.  You can check your database via the terminal or [MongoChef](http://3t.io/mongochef/). -->
 
-<!-- ####
+<!-- #### -->
 
-**Mongo Query** -->
+**Mongo Query**
 
 <!-- An new item query is in this format : -->
 <!-- `db.[collectionName].save(newObj, function(err, response){})` -->
@@ -159,22 +159,22 @@ app.post('/api/products', function(req, res){
 });
 ``` -->
 
-<!-- ### Get All Products -->
+### Get All Products
 
 <!-- #### -->
 
 <!-- Now you'll connect your Express API to Mongo. After each query/action to Mongo is complete, we'll send a response back to the client. -->
 
-<!-- Complete the GET /api/products endpoint -->
+Complete the GET /api/products endpoint
 
 <!-- For each of these steps we're going to use our db object we made when we set up our connection to mongo. -->
 
 <!-- **TESTPOINT**: At this point you should be able to hit the endpoint and have it touching your database. Use Postman to hit your endpoint.  You should be able to get a response back in Postman, and be able to see your data being returned from your database.  You can check your database via the terminal or [MongoChef](http://3t.io/mongochef/). -->
 
-<!-- ####
+<!-- #### -->
 
 
-**Mongo Query** -->
+**Mongo Query**
 
 <!-- A find multiple items query is in this format : -->
 <!-- `db.[collectionName].find({}, function(err, response){})` -->
@@ -188,7 +188,7 @@ app.post('/api/products', function(req, res){
 <!-- _req.query is also an object._ We can pass req.query into our `find()`.  This will let us change the query to mongo just by changing what we send to the endpoint. -->
 
 
-<!-- ##### Just the title -->
+##### Just the title
 
 <!-- The following url : http://localhost:9001/api/products?title=shoe -->
 
@@ -201,7 +201,7 @@ app.post('/api/products', function(req, res){
 <!-- So if we give this to mongo we are asking for any documents with a title equal to shoe -->
 
 
-<!-- ##### title and color -->
+##### title and color
 
 <!-- The following url : http://localhost:9001/api/products?title=shoe&color=red -->
 
@@ -230,17 +230,17 @@ app.get('/api/products', function(req, res){
 
 ``` -->
 
-<!-- ### Get One Product -->
+### Get One Product
 
 <!-- #### -->
 
-<!-- Complete the GET `/api/products/:id` endpoint -->
+Complete the GET `/api/products/:id` endpoint
 
 <!-- **TESTPOINT**: At this point you should be able to hit the endpoint and have it use your database. Use Postman to hit your endpoint.  You should be able to get a response back in Postman, and be able to see your data returned from your database.  You can check your database via the terminal or [MongoChef](http://3t.io/mongochef/). -->
 
 <!-- #### -->
 
-<!-- **Mongo Query** -->
+**Mongo Query**
 
 <!-- A find multiple items query is in this format : -->
 <!-- `db.[collectionName].findOne(queryObj, function(err, response){})` -->
@@ -274,17 +274,17 @@ app.get('/api/products/:id', function(req, res){
 
 ``` -->
 
-<!-- ### Update a product -->
+### Update a product
 
 <!-- #### -->
 
-<!-- Complete the PUT `/api/products/:id` endpoint -->
+Complete the PUT `/api/products/:id` endpoint
 
 <!-- **TESTPOINT**: At this point you should be able to hit the endpoint and have it use your database. Use Postman to hit your endpoint.  You should be able to get a response back in Postman, and be able to see your data being changed in your database.  You can check your database via the terminal or [MongoChef](http://3t.io/mongochef/). -->
 
 <!-- #### -->
 
-<!-- **Mongo Query** -->
+**Mongo Query**
 
 <!-- An update item query is in this format : -->
 <!-- `db.[collectionName].update(queryObj, changesObj, function(err, response){})` -->
@@ -319,17 +319,17 @@ app.put('/api/products/:id', function(req, res){
 });
 ``` -->
 
-<!-- ### Delete a product -->
+### Delete a product
 
 <!-- #### -->
 
-<!-- Complete the DELETE `/api/products/:id` endpoint -->
+Complete the DELETE `/api/products/:id` endpoint
 
 <!-- **TESTPOINT**: At this point you should be able to hit the endpoint and have it use your database. Use Postman to hit your endpoint.  You should be able to get a response back in Postman, and be able to see your data being removed in your database.  You can check your database via the terminal or [MongoChef](http://3t.io/mongochef/). -->
 
 <!-- #### -->
 
-<!-- **Mongo Query** -->
+**Mongo Query**
 
 <!-- An delete item query is in this format : -->
 <!-- `db.[collectionName].remove(queryObj, function(err, response){})` -->
@@ -367,7 +367,7 @@ app.delete('/api/products/:id', function(req, res){
 
 ####
 
-Now let's create the front-end. Feel free to set it up however you like.  The only stipulations are that you should have a main route/state where you can see all of the products and an admin route/state where you can create, edit, or delete products.  Don't worry about authentication or protecting your routes at this point.  If you have time, start to set up your front-end application as you think an eCommerce site should be organized.  Introduce some basic styling as well. You could use Bootstrap to help get things going visually.
+<!-- Now let's create the front-end. Feel free to set it up however you like.  The only stipulations are that you should have a main route/state where you can see all of the products and an admin route/state where you can create, edit, or delete products.  Don't worry about authentication or protecting your routes at this point.  If you have time, start to set up your front-end application as you think an eCommerce site should be organized.  Introduce some basic styling as well. You could use Bootstrap to help get things going visually. -->
 
 <!-- **TestPoint**: At this point, you should be able to go to the main view and see all of the products that are in your database.  You should also be able to go to the admin view, where you can create, update, or delete products.  As you use this interface, you should be able to get responses from the server, and see the data being changed in the database. -->
 

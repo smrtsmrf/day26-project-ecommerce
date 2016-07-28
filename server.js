@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongojs = require('mongojs');
 var ObjectId = mongojs.ObjectId;
+var mongoose = require('mongoose');
+var Product = require ('./models/Product')
+
 
 var port = 3000;
 var corsOptions = {
@@ -15,6 +18,9 @@ app.use(cors(corsOptions));
 app.use(cors())
 app.use(express.static(__dirname + '/public/'));
 
+app.listen(port, function () {
+	console.log('listening on', port);
+})
 
 var db = mongojs('ecommerce', ['products'])
 
@@ -59,9 +65,3 @@ app.delete('/api/products/:id', function (req, res, next) {
 		return error ? res.status(500).json(error) : res.json(response);	
 	})
 });
-
-
-
-app.listen(port, function () {
-	console.log('listening on', port);
-})
