@@ -121,27 +121,27 @@ module.exports = mongoose.model('product', schema)
 
 <!-- Now go to each of your product endpoints and put the necessary Mongoose logic to [Create](http://mongoosejs.com/docs/api.html#model_Model.create), [Read](http://mongoosejs.com/docs/api.html#model_Model.find), [findById](http://mongoosejs.com/docs/api.html#model_Model.findById),  [Update](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate) and [Delete](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove) products. Refer to those links for documentation. -->
 
-**TestPoint**: At this point you should be able to manipulate the product data via your Express endpoints just like you could when MongoJS was installed.  Test this using POSTMan and the command line or RoboMongo.  After you test the endpoints, go to your front-end product interface (if you were able to build it yesterday) and make sure that the interface still works and manipulates the data like you expect. You may have to update your data models on the front-end to match the model we just set up with Mongoose.
+<!-- **TestPoint**: At this point you should be able to manipulate the product data via your Express endpoints just like you could when MongoJS was installed.  Test this using POSTMan and the command line or RoboMongo.  After you test the endpoints, go to your front-end product interface (if you were able to build it yesterday) and make sure that the interface still works and manipulates the data like you expect. You may have to update your data models on the front-end to match the model we just set up with Mongoose. -->
 
-The next step will integrate your backend to the front-end application that you built yesterday.  You will also expand the application to include new functionality.
+<!-- The next step will integrate your backend to the front-end application that you built yesterday.  You will also expand the application to include new functionality. -->
 
-####
+<!-- #### -->
 
-Mongoose queries work almost identically to mongo queries.  The differences:
-* Instead of using the db object from a connection we just make a 'model' and use the model directly.
-* Some of the terms are slightly different.
+<!-- Mongoose queries work almost identically to mongo queries.  The differences: -->
+<!-- * Instead of using the db object from a connection we just make a 'model' and use the model directly. -->
+<!-- * Some of the terms are slightly different. -->
 
-That's about it.  Callbacks, object structure, queries, all work pretty much the same.
+<!-- That's about it.  Callbacks, object structure, queries, all work pretty much the same. -->
 
 **General flow**
 
-* Require your model at the top of the file you want to use it in and save it to a variable.
-* Use the model to do the query you want
-* Send a response back to the user
+<!-- * Require your model at the top of the file you want to use it in and save it to a variable. -->
+<!-- * Use the model to do the query you want -->
+<!-- * Send a response back to the user -->
 
-####
+<!-- #### -->
 
-**Updated queries**
+<!-- **Updated queries**
 
 ##### Find many query
 ```
@@ -196,26 +196,26 @@ Product.findByIdAndRemove(req.params.id, function(error, response){
     return res.json(response)
   }
 })
-```
+``` -->
 
 
 ### Cleaning up our code
 
 ####
 
-It is important to keep your code looking clean and neat.  It would be wise for you to outsource the logic from each of your endpoints to a product controller or something similar.  You should also outsource your schema and model declarations to a Product model file.  If you need reminders on how Node's require and export system works, check out [this](http://openmymind.net/2012/2/3/Node-Require-and-Exports/) blog post.
+<!-- It is important to keep your code looking clean and neat.  It would be wise for you to outsource the logic from each of your endpoints to a product controller or something similar.  You should also outsource your schema and model declarations to a Product model file.  If you need reminders on how Node's require and export system works, check out [this](http://openmymind.net/2012/2/3/Node-Require-and-Exports/) blog post. -->
 
 ### Connect Front-End
 
 ####
 
-Endpoints are how a front end and back end communicate.  Urls, parameters, queries, and bodies.  That's it.  We didn't change any of those today.  We only changed what was going on underneath.  So our front end should still work!
+<!-- Endpoints are how a front end and back end communicate.  Urls, parameters, queries, and bodies.  That's it.  We didn't change any of those today.  We only changed what was going on underneath.  So our front end should still work! -->
 
-Make sure that you have an interface where users can view products and add them to their cart.  
+<!-- Make sure that you have an interface where users can view products and add them to their cart.   -->
 
-**TestPoint**: You should now be able to see all of the products on the front-end.
+<!-- **TestPoint**: You should now be able to see all of the products on the front-end. -->
 
-Once you've finished the front-end, take some time to style your app and make it user-friendly.  Tomorrow you will finish the app by adding a a cart to the user, allow them to check out, and keep track of their current and past orders.
+<!-- Once you've finished the front-end, take some time to style your app and make it user-friendly.  Tomorrow you will finish the app by adding a a cart to the user, allow them to check out, and keep track of their current and past orders. -->
 
 
 ### Copyright
