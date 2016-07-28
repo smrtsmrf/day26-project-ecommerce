@@ -19,7 +19,8 @@
 			console.log(value);
 			var obj = {};
 			obj.method = method;
-			obj.url = value.id ? 'http://localhost:3000/api/products/' + value.id :'http://localhost:3000/api/products/';
+			obj.url = value.id ? 'http://localhost:3000/api/products?id=' + value.id :'http://localhost:3000/api/products/';
+			console.log(obj.url);
 			obj.data = value.req;
 
 			return $http(obj)

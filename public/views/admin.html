@@ -6,8 +6,9 @@
 			<option value="DELETE">DELETE</option>
 		</select>
 		<input ng-class="{hidden: method=='POST'}" class="form-control" placeholder="id" ng-model="value.id">
-		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="name" ng-model="value.req.name">
-		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="age" ng-model="value.req.age">
+		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="title" ng-model="value.req.title">
+		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="description" ng-model="value.req.description">
+		<input ng-class="{hidden: method=='DELETE'}" class="form-control" placeholder="price" ng-model="value.req.price">
 		<input type="submit" value="Submit">
 	</form>
 </div>

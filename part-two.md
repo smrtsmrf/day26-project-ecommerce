@@ -30,32 +30,32 @@ Today you are going to convert the current Mongo functionality to use Mongoose. 
 
 ####
 
-At your application's root folder, run the following command via command line: `npm uninstall --save mongojs`.  This will remove mongojs from your node_modules folder and from your package.json.  Remove or comment out any logic related to MongoJS.
+<!-- At your application's root folder, run the following command via command line: `npm uninstall --save mongojs`.  This will remove mongojs from your node_modules folder and from your package.json.  Remove or comment out any logic related to MongoJS. -->
 
-After removing everything MongoJS related, you should be able to start up your server and run it without any errors.
+<!-- After removing everything MongoJS related, you should be able to start up your server and run it without any errors. -->
 
-Now that MongoJS is removed, install Mongoose and follow the [instructions](http://mongoosejs.com/docs/connections.html) to connect to MongoDB.  In your code, connect to Mongo after your Express app has started listening.  
+<!-- Now that MongoJS is removed, install Mongoose and follow the [instructions](http://mongoosejs.com/docs/connections.html) to connect to MongoDB.  In your code, connect to Mongo after your Express app has started listening.   -->
 
-**TestPoint**: After setting up Mongoose, you should be able to listen with your Express app and with Mongoose.  The Mongoose connection method can optionally take a callback as the last argument.  That callback sends one argument, `error`.  `console.log` the `error` parameter.  If it's undefined, you've connected correctly. See [this SO](http://stackoverflow.com/questions/6676499/is-there-a-mongoose-connect-error-callback) answer for an example.
+<!-- **TestPoint**: After setting up Mongoose, you should be able to listen with your Express app and with Mongoose.  The Mongoose connection method can optionally take a callback as the last argument.  That callback sends one argument, `error`.  `console.log` the `error` parameter.  If it's undefined, you've connected correctly. See [this SO](http://stackoverflow.com/questions/6676499/is-there-a-mongoose-connect-error-callback) answer for an example. -->
 
 ####
 
 **Mongoose connection**
-```
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/products');
-```
+<!-- ``` -->
+<!-- var mongoose = require('mongoose'); -->
+<!-- mongoose.connect('mongodb://localhost/products'); -->
+<!-- ``` -->
 
 
 ### Step 2: Create Product Model
 
 ####
 
-Remove or comment out the logic from your endopints that handle creating, reading, updating, and deleting products.  You are going to create a Mongoose Product model and do your CRUD actions that way.
+<!-- Remove or comment out the logic from your endpoints that handle creating, reading, updating, and deleting products.  You are going to create a Mongoose Product model and do your CRUD actions that way. -->
 
-Create a new Product schema and model.  Give it the following fields:
+<!-- Create a new Product schema and model.  Give it the following fields: -->
 
- - **Title**: This will be the title of the product
+<!--  - **Title**: This will be the title of the product
   - String
   - Unique
   - Required
@@ -68,19 +68,19 @@ Create a new Product schema and model.  Give it the following fields:
   - Required
   - Minimum of 0
 
-Feel free to add any additional fields you feel are necessary.
+Feel free to add any additional fields you feel are necessary. -->
 
-####
+<!-- ####
 
 A lot of this is things we learned in node.
 * Create a new file
 * require mongooose
 * create your schema
-* export a model built from a schema
+* export a model built from a schema -->
 
 **Creating a schema**
 
-To create a schema we invoke `mongoose.Schema()` function and pass in an object with the fields we want.
+<!-- To create a schema we invoke `mongoose.Schema()` function and pass in an object with the fields we want.
 To define a type we set the value equal to an object.
 
 This creates a schema with one property, name, that is a required and unique string.
@@ -88,10 +88,10 @@ This creates a schema with one property, name, that is a required and unique str
 mongoose.Schema({
     name: { type: String, required: true, unique: true}
 })
-```
+``` -->
 
 **Creating a model**
-Once we've built our schema object we want to save it to a variable so that we can make a model with it.
+<!-- Once we've built our schema object we want to save it to a variable so that we can make a model with it.
 That structure looks like this:
 
 `mongoose.model('[collectionName]', schemaObj)`
@@ -112,14 +112,14 @@ var schema = new Schema({
 
 module.exports = mongoose.model('product', schema)
 
-```
+``` -->
 
 
 ### Update our queries to use mongoose
 
 ####
 
-Now go to each of your product endpoints and put the necessary Mongoose logic to [Create](http://mongoosejs.com/docs/api.html#model_Model.create), [Read](http://mongoosejs.com/docs/api.html#model_Model.find), [findById](http://mongoosejs.com/docs/api.html#model_Model.findById),  [Update](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate) and [Delete](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove) products. Refer to those links for documentation.
+<!-- Now go to each of your product endpoints and put the necessary Mongoose logic to [Create](http://mongoosejs.com/docs/api.html#model_Model.create), [Read](http://mongoosejs.com/docs/api.html#model_Model.find), [findById](http://mongoosejs.com/docs/api.html#model_Model.findById),  [Update](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate) and [Delete](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove) products. Refer to those links for documentation. -->
 
 **TestPoint**: At this point you should be able to manipulate the product data via your Express endpoints just like you could when MongoJS was installed.  Test this using POSTMan and the command line or RoboMongo.  After you test the endpoints, go to your front-end product interface (if you were able to build it yesterday) and make sure that the interface still works and manipulates the data like you expect. You may have to update your data models on the front-end to match the model we just set up with Mongoose.
 
