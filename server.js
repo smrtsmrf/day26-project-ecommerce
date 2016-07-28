@@ -3,9 +3,6 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongojs = require('mongojs');
 var ObjectId = mongojs.ObjectId;
-var mongoose = require('mongoose');
-var Product = require ('./models/Product')
-
 
 var port = 3000;
 var corsOptions = {
