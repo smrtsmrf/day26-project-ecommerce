@@ -19,7 +19,7 @@ app.listen(port, function () {
 	console.log('listening on', port);
 })
 
-mongoose.connect('mongodb://localhost:27017/ecommerce-2', function (err) {
+mongoose.connect('mongodb://localhost:27017/ecommerce-3', function (err) {
 	if (err) throw err;
 });
 
