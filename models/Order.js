@@ -9,7 +9,7 @@ var orderSchema = new Schema({
 		required: true 
 	},
 	products: [{
-		product: productSchema,
+		product: [productSchema],
 		quantity: { 
 			type: Number, 
 			required: true, 

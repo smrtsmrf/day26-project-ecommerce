@@ -28,40 +28,40 @@ Today you are going to create two new schemas, one for Orders and one for Carts.
 
 ####
 
-Create a schema for orders.  Add whatever fields you feel it might need.  
+<!-- Create a schema for orders.  Add whatever fields you feel it might need.   -->
 
-*Orders should have two special relationships: a reference to a user, and embedded products.*
+<!-- *Orders should have two special relationships: a reference to a user, and embedded products.* -->
 
-Create the Order model with your schema and export it.
+<!-- Create the Order model with your schema and export it. -->
 
 ####
 
 **Refs**
 
-Refs on an object schema are made by specifying the type as `Schema.Types.ObjectId`, AND adding a `ref: [modelName]` key on that same schema.
+<!-- Refs on an object schema are made by specifying the type as `Schema.Types.ObjectId`, AND adding a `ref: [modelName]` key on that same schema. -->
 
-IE - If I have a Pet with a reference to an Owner it would look like this:
+<!-- IE - If I have a Pet with a reference to an Owner it would look like this: -->
 
-```
+<!-- ```
 var petSchema = new mongoose.Schema({
     owner: {type: Schema.Types.ObjectId, ref: 'Owner'}
 })
-```
+``` -->
 
 **Embedded Schema**
 
-Embedded Schema is made by specifying the type as a pre-made Schema object.   
+<!-- Embedded Schema is made by specifying the type as a pre-made Schema object.    -->
 
-IE - If I have an owner with multiple pets:
+<!-- IE - If I have an owner with multiple pets: -->
 
-* Make a pet schema
-* Make an owner schema
-* In the owner schema add an array of pets
-  * The array of pets should be of type petSchema
+<!-- * Make a pet schema -->
+<!-- * Make an owner schema -->
+<!-- * In the owner schema add an array of pets -->
+  <!-- * The array of pets should be of type petSchema -->
 
-This would look like this on the owner side
+<!-- This would look like this on the owner side -->
 
-```
+<!-- ```
 var petSchema = require('./petSchema');
 
 var owner = new mongoose.Schema({
@@ -91,23 +91,23 @@ var schema = new Schema({
 })
 
 module.exports = mongoose.model('orders', schema)
-```
+``` -->
 
 
 ### Create The cart schema
-Create a schema for carts.  Add whatever fields you feel it might need.  
+<!-- Create a schema for carts.  Add whatever fields you feel it might need.   -->
 
-*Carts should have an array of references to products.*
+<!-- *Carts should have an array of references to products.* -->
 
-Once you've created your schema, export it (NOT as a model).  Then go to your User model and use the cart schema for the User's cart field.
+<!-- Once you've created your schema, export it (NOT as a model).  Then go to your User model and use the cart schema for the User's cart field. -->
 
-*Note*:  This may seem confusing.  Technically, you could just define the new fields in the User's schema.  But it's important to know that a schema is just a pattern or blueprint to follow.  It can be used in multiple models.  For clarification on the difference between a schema and a model see [this SO post](http://stackoverflow.com/questions/22950282/schema-vs-model).
+<!-- *Note*:  This may seem confusing.  Technically, you could just define the new fields in the User's schema.  But it's important to know that a schema is just a pattern or blueprint to follow.  It can be used in multiple models.  For clarification on the difference between a schema and a model see [this SO post](http://stackoverflow.com/questions/22950282/schema-vs-model). -->
 
-**TestPoint**: You should be able to spin up your server without any errors.  You should also be able to test that your new Order model and new cart schema are working.  You can either create a dummy endpoint and hook it up to your models, or write a script in your server.js file and run it on server load.  Test and make sure that you can create new Orders and add items to a user's cart.
+<!-- **TestPoint**: You should be able to spin up your server without any errors.  You should also be able to test that your new Order model and new cart schema are working.  You can either create a dummy endpoint and hook it up to your models, or write a script in your server.js file and run it on server load.  Test and make sure that you can create new Orders and add items to a user's cart. -->
 
-If you've passed this TestPoint, then you have essentially set up your relationships.  Good work!  Let's walk through how you are going to work with these relationships.
+<!-- If you've passed this TestPoint, then you have essentially set up your relationships.  Good work!  Let's walk through how you are going to work with these relationships. -->
 
-####
+<!-- ####
 
 We're using an embedded schema just like in the prior step.
 
@@ -125,9 +125,9 @@ var schema = new Schema({
 })
 
 module.exports = schema;
-```
+``` -->
 
-__userModel.js__
+<!-- __userModel.js__
 ```
 var mongoose = require('mongoose')
   , cart     = require('./cart')
@@ -141,7 +141,7 @@ var schema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('User', schema)
-```
+``` -->
 
 ### Create Endpoints
 
@@ -159,46 +159,46 @@ Create the following Express endpoints:
 
 ####
 
-With the cart POST endpoint, you will expect a request parameter of `user_id` that will be the id of a user. The request body will have a JSON of the product that is being added to the cart, including a quantity.  
-We have the id of the user we want to update, and the item we want to add to the cart.
-Use findByIdAndUpdate with [$push](https://docs.mongodb.org/manual/reference/operator/update/push/) to add your item to the cart
+<!-- With the cart POST endpoint, you will expect a request parameter of `user_id` that will be the id of a user. The request body will have a JSON of the product that is being added to the cart, including a quantity.   -->
+<!-- We have the id of the user we want to update, and the item we want to add to the cart. -->
+<!-- Use findByIdAndUpdate with [$push](https://docs.mongodb.org/manual/reference/operator/update/push/) to add your item to the cart -->
 
-*Note*: At some point you may realize that the models you created earlier are not complete enough for what we're trying to do.  Feel free to go back and change your models to make them work.
+<!-- *Note*: At some point you may realize that the models you created earlier are not complete enough for what we're trying to do.  Feel free to go back and change your models to make them work. -->
 
-####
+<!-- #### -->
 
-__$push__
-$push is a way to tell mongo to 'push' the value into an array instead of overriding an existing array.  
-If I had an owner with an array of pets I would write something like this to add a new pet
-
+<!-- __$push__ -->
+<!-- $push is a way to tell mongo to 'push' the value into an array instead of overriding an existing array.   -->
+<!-- If I had an owner with an array of pets I would write something like this to add a new pet -->
+<!-- 
 ```
 Owner.findByIdAndUpdate([userId], {$push: {pets: newPetObj}})
-```
+``` -->
 
-This is going to find the user with the id we pass it, then `push` into the `pets` property a value of whatever is on our `newPetObj`
+<!-- This is going to find the user with the id we pass it, then `push` into the `pets` property a value of whatever is on our `newPetObj` -->
 
-####
+<!-- ####
 __code__  
 
 ```
 User.findByIdAndUpdate(req.params.user_id, {$push: {cart: req.body}}, function(err, res){
       //handle the response here by checking for err etc.  Just like existing handlers.
   })
-```
+``` -->
 
 ### Cart PUT
 
 ####
 
-The cart PUT endpoint will be similar, but is intended to change the quantity of a particular item in the cart. If the new quantity is 0, simply remove the item from the cart altogether. We should get two properties on our req.query , a qty and itmId
+<!-- The cart PUT endpoint will be similar, but is intended to change the quantity of a particular item in the cart. If the new quantity is 0, simply remove the item from the cart altogether. We should get two properties on our req.query , a qty and itmId -->
 
-####
+<!-- #### -->
 
-There isn't a one operation way to update the data while it's in the collection.  
+<!-- There isn't a one operation way to update the data while it's in the collection.   -->
 
-The url we'll use to hit this endpoint will look like this :
+<!-- The url we'll use to hit this endpoint will look like this : -->
 
-`/api/cart/:user_id?qty=value&itmId=value`
+<!-- `/api/cart/:user_id?qty=value&itmId=value`
 
 `http://localhost:9001/api/cart/abd3a-hoibzxcli-23bklasdv-asef/?qty=3&itmId=hoinbs-aw43lnvas-aslisd-alnxcibo`
 
@@ -248,20 +248,20 @@ User.findById(req.params.user_id, function(err, resp) {
      })
    };
 }
-```
+``` -->
 
 ### User GET
 
 ####
 
-We need to send the entire cart whenever the user is retrieved.  Look at Mongoose's [.populate()](http://mongoosejs.com/docs/populate.html) method.  Wherever you are getting your user, add the .populate to populate your cart before sending it to the client.
+<!-- We need to send the entire cart whenever the user is retrieved.  Look at Mongoose's [.populate()](http://mongoosejs.com/docs/populate.html) method.  Wherever you are getting your user, add the .populate to populate your cart before sending it to the client. -->
 
 ####
 
-To get populate to work we want to use their 'exec' syntax.  When writing the query this way we pass the pieces in to small chained functions, and then when we're all done we call exec.
+<!-- To get populate to work we want to use their 'exec' syntax.  When writing the query this way we pass the pieces in to small chained functions, and then when we're all done we call exec. -->
 
-IE - Let's assume we have an owner with pets.  The pets array has a `ref` to another collection called `breeds`.  A piece of data might look like this:
-```
+<!-- IE - Let's assume we have an owner with pets.  The pets array has a `ref` to another collection called `breeds`.  A piece of data might look like this: -->
+<!-- ```
 {
   firstName: 'Johno',
   lastName: 'Smith',
@@ -306,21 +306,21 @@ User
   })
 
 })
-```
+``` -->
 
 ### Order POST
 
 ####
 
-With the order POST endpoint, send a request param of `user_id` that will include the id a user.  In the handler, get the user's cart and create a new order with the products in the cart.  Make sure you use the user's id to reference from the order to the user. After successfully creating the order, empty the user's cart.
+<!-- With the order POST endpoint, send a request param of `user_id` that will include the id a user.  In the handler, get the user's cart and create a new order with the products in the cart.  Make sure you use the user's id to reference from the order to the user. After successfully creating the order, empty the user's cart. -->
 
-There isn't anything new that we haven't done here so give it a try.
+<!-- There isn't anything new that we haven't done here so give it a try. -->
 
-**TestPoint**:  Create a new user and add several items to their cart.  Then take their id and hit the `/api/order` endpoint with it (via Postman or your Angular application).  It should create a a new order and empty the user's cart.  Use MongoChef or the command line to check the data.
+<!-- **TestPoint**:  Create a new user and add several items to their cart.  Then take their id and hit the `/api/order` endpoint with it (via Postman or your Angular application).  It should create a a new order and empty the user's cart.  Use MongoChef or the command line to check the data. -->
 
 ####
 
-Here is the flow with some hints:
+<!-- Here is the flow with some hints:
 __PseudoCode__
 ```
 userId = req.params.user_id
@@ -368,27 +368,27 @@ create: function(req, res) {
     });
   });
 }
-```
+``` -->
 
 
 ### Order GET
 
 ####
 
-With the order GET endpoint, simply accept a reqeust query of whatever orders you're searching for.  For example, if you were looking for all orders placed on a certain day, the URL might look like this: `/api/order?date=07/09/16`.  If you were looking for a specific user's orders, it might look like so: `/api/order?user=o09f6d8fnn7df7n9joj`.  Look at Mongoose's [query](http://mongoosejs.com/docs/queries.html) documentation if you need some examples.
+<!-- With the order GET endpoint, simply accept a reqeust query of whatever orders you're searching for.  For example, if you were looking for all orders placed on a certain day, the URL might look like this: `/api/order?date=07/09/16`.  If you were looking for a specific user's orders, it might look like so: `/api/order?user=o09f6d8fnn7df7n9joj`.  Look at Mongoose's [query](http://mongoosejs.com/docs/queries.html) documentation if you need some examples. -->
 
-**TestPoint**: You should be able to test your order GET endpoint via Postman or your app.  Try a few different queries.  The most important one is the user query.
+<!-- **TestPoint**: You should be able to test your order GET endpoint via Postman or your app.  Try a few different queries.  The most important one is the user query. -->
 
-If you've passed this last breakpoint, then  you've finished the backend of your application. Well done.
-
-####
-
-If you looked at this you're over thinking the problem.  
-
-Take the req.query and pass it into a mongo query on the orders table as the criteria.  
-Return the results!
+<!-- If you've passed this last breakpoint, then  you've finished the backend of your application. Well done. -->
 
 ####
+
+<!-- If you looked at this you're over thinking the problem.   -->
+
+<!-- Take the req.query and pass it into a mongo query on the orders table as the criteria.   -->
+<!-- Return the results! -->
+
+<!-- ####
 
 __code__
 
@@ -400,7 +400,7 @@ Order.find(req.query, function(err, result) {
       res.send(result);
     });
 ```
-
+ -->
 ### Connect front-end
 
 ####
